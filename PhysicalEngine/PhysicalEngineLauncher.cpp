@@ -256,7 +256,7 @@ void PhysicalEngineLauncher::handleGui() {
 #ifdef __EMSCRIPTEN__
             if (startPosition) {
                 ImGui::SetNextWindowPos(ImVec2(2 + 0, 2 + 20));
-                ImGui::SetNextWindowSize(ImVec2(200, 200));
+                ImGui::SetNextWindowSize(ImVec2(200, 100));
             }
 #endif
             ImGui::Begin("Window info");
@@ -269,8 +269,8 @@ void PhysicalEngineLauncher::handleGui() {
         {
 #ifdef __EMSCRIPTEN__
             if (startPosition) {
-                ImGui::SetNextWindowPos(ImVec2(2 + 0, 2 + 20 + 200 + 2));
-                ImGui::SetNextWindowSize(ImVec2(200, windowHeight/4));
+                ImGui::SetNextWindowPos(ImVec2(2 + 0, 2 + 20 + 100 + 2));
+                ImGui::SetNextWindowSize(ImVec2(200, windowHeight/2));
             }
 #endif
             ImGui::Begin("Hierarchy");
@@ -306,8 +306,8 @@ void PhysicalEngineLauncher::handleGui() {
         {
 #ifdef __EMSCRIPTEN__
             if (startPosition) {
-                ImGui::SetNextWindowPos(ImVec2(2 + 0, 2 + 20 + 200 + 2 + windowHeight/4 + 2));
-                ImGui::SetNextWindowSize(ImVec2(200, windowHeight/4));
+                ImGui::SetNextWindowPos(ImVec2(2 + 0, 2 + 20 + 100 + 2 + windowHeight/2 + 2));
+                ImGui::SetNextWindowSize(ImVec2(200, windowHeight - 20 - 100 - 2 - windowHeight/2 - 2 -2));
             }
 #endif
             ImGui::Begin("View tools");
@@ -344,7 +344,7 @@ void PhysicalEngineLauncher::handleGui() {
 #ifdef __EMSCRIPTEN__
             if (startPosition) {
                 ImGui::SetNextWindowPos(ImVec2(windowWidth - 200 - 2, 2 + 20));
-                ImGui::SetNextWindowSize(ImVec2(200, windowHeight/4));
+                ImGui::SetNextWindowSize(ImVec2(200, windowHeight - 20 - 2 - 2));
             }
 #endif
             ImGui::Begin("Inspector");
@@ -391,8 +391,11 @@ void PhysicalEngineLauncher::handleGui() {
         {
 #ifdef __EMSCRIPTEN__
             if (startPosition) {
-                ImGui::SetNextWindowPos(ImVec2(windowWidth - 200 - 2, 2 + 20 + windowHeight/4 + 2));
-                ImGui::SetNextWindowSize(ImVec2(200, windowHeight/4));
+                //center at the bottom
+                ImGui::SetNextWindowPos(ImVec2(windowWidth/2 - 300/2, windowHeight - 210));
+                ImGui::SetNextWindowSize(ImVec2(300, 210));
+//                // set to minimize
+//                ImGui::SetNextWindowCollapsed(true);
             }
 #endif
             ImGui::Begin("Speed graph viewer");
