@@ -209,6 +209,7 @@ void PhysicalEngineLauncher::handleGui() {
             static bool my_tool_active = true;
             static bool showAboutPopup = false;
             if (ImGui::BeginMainMenuBar()) {
+#ifndef __EMSCRIPTEN__
                 if (ImGui::BeginMenu("File")) {
                     //                    if (ImGui::MenuItem("Open..", "Ctrl+O"))
                     //                    { /* Do stuff */
@@ -224,6 +225,7 @@ void PhysicalEngineLauncher::handleGui() {
                     if (ImGui::MenuItem("FullScreen", "F11")) { toggleFullScreen(); }
                     ImGui::EndMenu();
                 }
+#endif
                 if (ImGui::BeginMenu("Help")) {
                     if (ImGui::MenuItem("About " PROJECT_NAME "...")) {
                         showAboutPopup = true;
