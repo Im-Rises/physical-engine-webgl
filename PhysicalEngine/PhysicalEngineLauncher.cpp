@@ -199,6 +199,11 @@ void PhysicalEngineLauncher::handleGui() {
     ImGui_ImplGlfw_NewFrame();
     ImGui::NewFrame();
     if (!isFullScreen) {
+
+#ifdef __EMSCRIPTEN__
+        static bool startPosition = true;
+#endif
+
         /*------------------ImGui windows------------------*/
         {
             static bool my_tool_active = true;
@@ -248,6 +253,12 @@ void PhysicalEngineLauncher::handleGui() {
             }
         }
         {
+#ifdef __EMSCRIPTEN__
+            if (startPosition) {
+                ImGui::SetNextWindowPos(ImVec2(windowWidth - 200, 0));
+    //            ImGui::SetNextWindowSize(ImVec2(windowWidth, windowHeight));
+            }
+#endif
             ImGui::Begin("Window info");
             ImGui::Text("%.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate,
                         ImGui::GetIO().Framerate);
@@ -256,6 +267,12 @@ void PhysicalEngineLauncher::handleGui() {
             ImGui::End();
         }
         {
+#ifdef __EMSCRIPTEN__
+            if (startPosition) {
+                ImGui::SetNextWindowPos(ImVec2(2, 20));
+                ImGui::SetNextWindowSize(ImVec2(200, windowHeight/4));
+            }
+#endif
             ImGui::Begin("Hierarchy");
             for (int i = 0; i < scene->getGameObjects().size(); i++) {
                 ImGui::Selectable((scene->getPtrGameObjectByIndex(i)->getName()).c_str(),
@@ -287,6 +304,12 @@ void PhysicalEngineLauncher::handleGui() {
             ImGui::End();
         }
         {
+#ifdef __EMSCRIPTEN__
+            if (startPosition) {
+                ImGui::SetNextWindowPos(ImVec2(windowWidth - 200, windowHeight * 1/3));
+                ImGui::SetNextWindowSize(ImVec2(100, windowHeight/3));
+            }
+#endif
             ImGui::Begin("View tools");
             ImGui::Text("Background color");
             ImGui::ColorPicker4("Background color", backgroundColor.data());
@@ -318,6 +341,12 @@ void PhysicalEngineLauncher::handleGui() {
             //            ImGui::End();
         }
         {
+#ifdef __EMSCRIPTEN__
+            if (startPosition) {
+                ImGui::SetNextWindowPos(ImVec2(windowWidth - 200, windowHeight * 2/3));
+                ImGui::SetNextWindowSize(ImVec2(100, 100));
+            }
+#endif
             ImGui::Begin("Speed graph viewer");
             {
                 static RollingBuffer rdata1, rdata2, rdata3;
@@ -363,6 +392,12 @@ void PhysicalEngineLauncher::handleGui() {
             ImGui::End();
         }
         {
+#ifdef __EMSCRIPTEN__
+            if (startPosition) {
+                ImGui::SetNextWindowPos(ImVec2(2, 22 + windowHeight/4));
+                ImGui::SetNextWindowSize(ImVec2(200, windowHeight*1/2));
+            }
+#endif
             ImGui::Begin("Inspector");
             if (gameObject != nullptr) {
                 ImGui::Text("Name: %s", gameObject->getName().c_str());
@@ -416,6 +451,7 @@ void PhysicalEngineLauncher::handleGui() {
             //            ImGui::End();
         }
         {
+#ifndef __EMSCRIPTEN__
             ImGui::Begin("Scene View", nullptr, ImGuiWindowFlags_NoCollapse);
             {
                 ImGui::BeginChild("GameRender");
@@ -424,7 +460,11 @@ void PhysicalEngineLauncher::handleGui() {
                 ImGui::EndChild();
             }
             ImGui::End();
+#endif
         }
+#ifdef __EMSCRIPTEN__
+        startPosition = false;
+#endif
     }
     ImGui::Render();
 }
@@ -454,11 +494,13 @@ void PhysicalEngineLauncher::updateScreen() {
         // Clear Main Screen
         clearScreen();
 
+#ifndef __EMSCRIPTEN__
         // If not in fullscreen, clear the opengl window
         if (!isFullScreen) {
             glBindFramebuffer(GL_FRAMEBUFFER, scene->getFrameBufferId());
             clearScreen();
         }
+#endif
 
         // Draw game
         scene->draw(display_w, display_h);
