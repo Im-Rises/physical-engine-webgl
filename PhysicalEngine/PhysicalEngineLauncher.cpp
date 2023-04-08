@@ -136,8 +136,8 @@ PhysicalEngineLauncher::PhysicalEngineLauncher() {
 
     glEnable(GL_DEPTH_TEST); // Enable depth testing
 
-    glEnable(GL_BLEND);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+//    glEnable(GL_BLEND);
+//    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     // Setup window for inputs
     InputManager::m_window = window;
@@ -441,7 +441,11 @@ void PhysicalEngineLauncher::updateGame(std::chrono::steady_clock::time_point &s
 void PhysicalEngineLauncher::updateScreen() {
     // Update viewport
     int display_w, display_h;
+#ifdef __EMSCRIPTEN__
+    emscripten_get_canvas_element_size("#canvas", &display_w, &display_h);
+#else
     glfwGetFramebufferSize(window, &display_w, &display_h);
+#endif
     updateViewport(display_w, display_h);
 
     // If window is minimized, don't draw anything (to avoid draw in a 0x0 window)
@@ -481,7 +485,6 @@ void PhysicalEngineLauncher::updateViewport(int width, int height) {
 
 
 void PhysicalEngineLauncher::toggleFullScreen() {
-    std::cout << "Toggle fullscreen" << std::endl;
 #ifndef __EMSCRIPTEN__
     GLFWmonitor *monitor = glfwGetPrimaryMonitor();
     const GLFWvidmode *mode = glfwGetVideoMode(monitor);
