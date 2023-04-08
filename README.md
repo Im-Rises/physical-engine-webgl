@@ -1,9 +1,10 @@
-# PhysicalEngine
+# physical-engine-webgl
 
 <p align="center">
-      <img src="https://user-images.githubusercontent.com/59691442/183268126-b3d19e66-8f2d-463a-805e-ae6ef7cc6c01.png" alt="cmakeLogo" style="height:60px;"/>
       <img src="https://img.shields.io/badge/C%2B%2B-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white" alt="cppLogo" style="height:60px;"/>
-      <img src="https://user-images.githubusercontent.com/59691442/190315010-0a84e171-a2bc-42a4-91c8-bb850960209c.png" alt="openglLogo" style="height:60px;"/>
+      <img src="https://img.shields.io/badge/OpenGL-FFFFFF?style=for-the-badge&logo=opengl" alt="openglLogo" style="height:60px;"/>
+      <img src="https://user-images.githubusercontent.com/59691442/183268126-b3d19e66-8f2d-463a-805e-ae6ef7cc6c01.png" alt="cmakeLogo" style="height:60px;"/>
+      <img src="https://user-images.githubusercontent.com/59691442/226524871-c73aa62f-d191-42d3-a1b9-ebbfc216a7bb.png" alt="webglLogo" style="height:60px;"/>
       <img src="https://user-images.githubusercontent.com/59691442/190315147-ec9dc33f-0090-4f0d-98ab-514eb1463e01.png" alt="glfwLogo" style="height:60px;"/>
 </p>
 
@@ -11,16 +12,12 @@
 
 This is a simple physics engine written in C++ using Glad, GLFW, OpenGl3 and Dear ImGui.
 
-It is implemented using Fixed Framerate and Component Oriented Programming.
-
+this repository is a port of the [PhysicalEngine](https://github.com/Im-Rises/physical-engine-webgl) project to WebGL2.
 
 🚀🚀 [You can test it online here](https://im-rises.github.io/physical-engine-webgl/) 🚀🚀
 
-The source code of the WebGL can be found at the following link:  
-<https://github.com/Im-Rises/physical-engine-webgl>
-
 > **Note**  
-> The project is made as a educational project to learn more about physics and game engine development.
+> The project is made as an educational project to learn more about physics and game engine development.
 
 ## Features
 
@@ -65,73 +62,50 @@ You can find a journal log [here](report/development_log_phase1_REBOUL_CLAVEL_MO
 It is also located in the `report` folder.
 -->
 
-## Quickstart
+## Building
 
-To download the app, you can click one of the icons below (depending on your operating system). You can also click the
-release section of the GitHub page.
+To build the project, you need to use a UNIX system, like Ubuntu or if you're on Windows you can use WSL.
+Then you have to install Emscripten. You can find
+instructions on how to install Emscripten here:  
+<https://emscripten.org/docs/getting_started/downloads.html>
 
-Depending on you `operating system` you will need to install some libs, they are installed differently depending on your
-system, please follow one of the section below `Windows` or `Linux` or `MacOs`.
+You also need to have CMake and make installed. You can find instructions on how to
+install CMake here:  
+<https://cmake.org/install/>
 
-> **Warning**
-> Be sure to put the `imgui.ini` file in the same folder as the executable.
-> You can find it in the `root` of the project. If you don't do this, the UI will not be displayed correctly.
-
-### Windows
-
-<a href="https://github.com/Im-Rises/PhysicalEngine/releases/latest"><img src="https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white" alt="cmakeLogo" style="height:40px;"/></a>
-
-For Windows users you don't need to install the libs. You can just download the app and run it.
+Make can be installed by running this command in the terminal:
 
 ```bash
-.\PhysicalEngine.exe
+sudo apt install make
 ```
 
-> **Warning**  
-> The project is set up to be built using CMake and vc2019 for Windows. If you want to modify the
-> compiler for vc2022 or other you will need to change the CMakeLists.txt .lib linking file accordingly to your vc20**
-> version.
-
-### Linux
-
-<a href="https://github.com/Im-Rises/PhysicalEngine/releases/latest"><img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black" alt="cmakeLogo" style="height:40px;"/></a>
-
-For Linux users, you need to install the GLFW lib, to do so type one of the following commands:
+Once you have Emscripten and CMake installed run this command in the project root directory:
 
 ```bash
-sudo apt-get install libglfw3
+emcmake cmake .
 ```
 
-or if you're a developer and want to compile the app, please install this version of GLFW:
+Then run this command in the same directory:
 
 ```bash
-sudo apt-get install libglfw3-dev
+emmake make
 ```
 
-Then you can start by double-clicking the executable of typing the following command next to it:
+## To test the website locally
+
+To test the website locally, you need to have Python installed. You can find instructions on how to install Python here:
+
+<https://www.python.org/downloads/>
+
+Once you have Python installed, run this command in the project build directory:
 
 ```bash
-./PhysicalEngine
+python -m http.server
 ```
 
-### MacOs
+Then open your browser and go to this address:
 
-<a href="https://github.com/Im-Rises/PhysicalEngine/releases/latest"><img src="https://img.shields.io/badge/mac%20os-000000?style=for-the-badge&logo=apple&logoColor=white" alt="cmakeLogo" style="height:40px;"/></a>
-
-For macOS users you will need to install Brew, please follow the instruction in the link below:  
-<https://brew.sh>
-
-Once it is installed, you can type the following command to install GLFW.
-
-```bash
-brew install glfw
-```
-
-Then you can start by double-clicking the executable of typing the following command next to it:
-
-```bash
-./PhysicalEngine
-```
+<http://localhost:8000/>
 
 ## Controls
 
@@ -158,201 +132,26 @@ To modify the speed value, you can use the ImGui window named `Speed handler`.
 | Translate camera downwards    | Right Mouse Button + Mouse ↓ movement |
 | Exit app                      | ESC                                   |
 
-## Project Architecture
-
-~~~
-PhysicalEngine
-├── .github
-|  ├── labels.yml
-|  ├── release.yml
-│  ├── workflows
-│  │   |── cmake.yml
-│  │   |── codeql.yml
-│  │   |── cpp-cmake-publish.yml
-│  │   |── cpp-linter.yml
-│  │   |── dependency-review.yml
-│  │   |── flawfinder.yml
-│  │   |── greetings.yml
-│  │   |── label.yml
-│  │   |── msvc.yml
-│  │   |── stale.yml
-├── dependencies
-|  ├── glad
-|  ├── glfw
-|  ├── glm
-|  ├── imgui
-|  ├── stb
-├── PhysicalEngine
-|  ├── Contact (Particles)
-│  │   |── *
-|  ├── Force
-│  │   |── *
-|  ├── Octree
-│  │   |── *
-|  ├── RigidbodyContact
-│  │   |── *
-|  ├── Scene
-│  │   |── *
-|  ├── Shader
-│  │   |── *
-|  ├── Utility
-│  │   |── *
-|  ├── CMakeLists.txt
-|  ├── Game.cpp
-|  ├── Game.h
-|  ├── InputManager.cpp
-|  ├── InputManager.h
-|  ├── main.cpp
-|  ├── PhysicalEngineLauncher.cpp
-|  ├── PhysicalEngineLauncher.h
-├── test
-|  ├── TestParticle
-│  │   |── *
-|  ├── CMakeLists.txt
-|  ├── matrix33Test.cpp
-|  ├── matrix34Test.cpp
-|  ├── quaternionTest.cpp
-|  ├── vector3dTest.cpp
-├── .clang-format
-├── .editorconfig
-├── .gitattributes
-├── .gitignore
-├── CMakelists.txt
-├── CMakePresets.json
-├── CMakeSettings.json
-├── imgui.ini
-├── README.md
-~~~
-
 ## Dependencies
 
 - C++ 14
 - CMake
-- C++ compiler (MSVC, Mingw, ...)
-- Glad
+- Emscripten (2.0.29)
 - GLFW (3.3.8)
 - OpenGl (3.3)
-- Dear ImGui (1.88)
-- glm (0.9.8.5)
-
-## Compilation
-
-To compile the app, the first thing you need to do is install a C++ compiler:
-
-- Visual Studio (MSVC)
-- Mingw
-- ...
-
-You also need to install Cmake:  
-<https://cmake.org>
-
-Once your environment is set up, depending on your operating system you'll need to install some libs before compiling
-the project. Refer to the section below `Windows` or `Linux` or `MacOs`.
-
-### Windows
-
-Windows users can directly compile the project by typing the following command at the project root folder:
-
-```bash
-cmake .
-```
-
-> **Note**  
-> If you're using Visual Studio, you can install CMake directly from the IDE (Visual Studio Installer).
-> Then you need to open the Project as a CMake Project, not a Visual Studio Project!
-
-### Linux
-
-Linux's users need to install some libs before compiling the project:
-
-First thing to do is to install CMake, type the following command to install it.
-
-```bash
-sudo apt-get install cmake
-```
-
-You also need to install the GLFW lib. Type the following command at the project root.
-
-```bash
-sudo apt-get install libglfw3-dev
-```
-
-You are now able to compile the project. Go to the project root and type the following command:
-
-```bash
-cmake .
-```
-
-### MacOs
-
-For macOS user, you should install brew package manager by following the instructions in the link below:  
-<https://brew.sh>
-
-Then type the following command to install cmake:
-
-```bash
-brew install cmake
-```
-
-and this one to install GLFW
-
-```bash
-brew install glfw
-```
-
-You are now able to compile the project. Go to the project root and type the following command:
-
-```bash
-cmake .
-```
-
-## Oriented Components Architecture
-
-Placeholder
-
-<!--
-    //////////////////////////////////
-//    // Method 1
-//    gameObjects[0]->addComponentByName("Collider");
-
-//    // Method 2
-//    Collider *collider = nullptr;
-//    gameObjects[0]->addComponentByClass<Collider>(collider);
-    //////////////////////////////////
-//    //Method 1
-//    Particle *particle = dynamic_cast<Particle *>(gameObjects[0]->getComponentByName("Particle"));
-
-//    // Method 2
-//    Collider *particle = nullptr;
-//    gameObjects[0]->getComponentByClass<Collider>(particle);
-//    std::cout << particle->getName() << std::endl;
-    //////////////////////////////////
-//    //Method 1
-//    Particle *particle = dynamic_cast<Particle *>(gameObjects[0]->addComponentByName("Particle"));
-
-//    // Method 2
-//    Collider *particle = nullptr;
-//    gameObjects[0]->deleteComponentByClass<Collider>(particle);
-    //////////////////////////////////
--->
+- Glad (0.1.36)
+- Dear ImGui (1.89.4)
+- glm (0.9.8)
 
 ## Run tests
 
-A CMake test is set up to directly test the program. You can find it in the `test`folder and start it by typing the
-command below at the project root folder.
-
-```bash
-ctest
-```
+The project has unit tests to check come common classes. You can find them in the `test` folder.
 
 ## Github-Actions
 
-[![CodeQL](https://github.com/Im-Rises/PhysicalEngine/actions/workflows/codeql.yml/badge.svg?branch=main)](https://github.com/Im-Rises/PhysicalEngine/actions/workflows/codeql.yml)
-[![CMake](https://github.com/Im-Rises/PhysicalEngine/actions/workflows/cmake.yml/badge.svg?branch=main)](https://github.com/Im-Rises/PhysicalEngine/actions/workflows/cmake.yml)
-[![Cpp Cmake Publish](https://github.com/Im-Rises/PhysicalEngine/actions/workflows/cpp-cmake-publish.yml/badge.svg?branch=main)](https://github.com/Im-Rises/PhysicalEngine/actions/workflows/cpp-cmake-publish.yml)
-[![flawfinder](https://github.com/Im-Rises/PhysicalEngine/actions/workflows/flawfinder.yml/badge.svg?branch=main)](https://github.com/Im-Rises/PhysicalEngine/actions/workflows/flawfinder.yml)
-[![Microsoft C++ Code Analysis](https://github.com/Im-Rises/PhysicalEngine/actions/workflows/msvc.yml/badge.svg?branch=main)](https://github.com/Im-Rises/PhysicalEngine/actions/workflows/msvc.yml)
-[![cpp-linter](https://github.com/Im-Rises/PhysicalEngine/actions/workflows/cpp-linter.yml/badge.svg?branch=main)](https://github.com/Im-Rises/PhysicalEngine/actions/workflows/cpp-linter.yml)
+[![CodeQL](https://github.com/Im-Rises/physical-engine-webgl/actions/workflows/codeql.yml/badge.svg?branch=main)](https://github.com/Im-Rises/physical-engine-webgl/actions/workflows/codeql.yml)
+[![CMake](https://github.com/Im-Rises/physical-engine-webgl/actions/workflows/cmake.yml/badge.svg?branch=main)](https://github.com/Im-Rises/physical-engine-webgl/actions/workflows/cmake.yml)
+[![cpp-linter](https://github.com/Im-Rises/physical-engine-webgl/actions/workflows/cpp-linter.yml/badge.svg?branch=main)](https://github.com/Im-Rises/physical-engine-webgl/actions/workflows/cpp-linter.yml)
 
 The project is set with a set of different scripts:
 
@@ -419,4 +218,4 @@ Clémence CLAVEL:
 - @clemos38
 - <https://github.com/clemos38>
 
-[![GitHub contributors](https://contrib.rocks/image?repo=Im-Rises/PhysicalEngine)](https://github.com/Im-Rises/PhysicalEngine/graphs/contributors)
+[![GitHub contributors](https://contrib.rocks/image?repo=Im-Rises/physical-engine-webgl)](https://github.com/Im-Rises/physical-engine-webgl/graphs/contributors)
