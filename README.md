@@ -147,11 +147,16 @@ To modify the speed value, you can use the ImGui window named `Speed handler`.
 
 The project has unit tests to check come common classes. You can find them in the `test` folder.
 
-## Github-Actions
+## GitHub Actions
+
+This project uses GitHub Actions to build the project and deploy it to GitHub
 
 [![CodeQL](https://github.com/Im-Rises/physical-engine-webgl/actions/workflows/codeql.yml/badge.svg?branch=main)](https://github.com/Im-Rises/physical-engine-webgl/actions/workflows/codeql.yml)
 [![CMake](https://github.com/Im-Rises/physical-engine-webgl/actions/workflows/cmake.yml/badge.svg?branch=main)](https://github.com/Im-Rises/physical-engine-webgl/actions/workflows/cmake.yml)
+[![flawfinder](https://github.com/Im-Rises/physical-engine-webgl/actions/workflows/flawfinder.yml/badge.svg?branch=main)](https://github.com/Im-Rises/physical-engine-webgl/actions/workflows/flawfinder.yml)
 [![cpp-linter](https://github.com/Im-Rises/physical-engine-webgl/actions/workflows/cpp-linter.yml/badge.svg?branch=main)](https://github.com/Im-Rises/physical-engine-webgl/actions/workflows/cpp-linter.yml)
+[![Emscripten-CMake](https://github.com/Im-Rises/physical-engine-webgl/actions/workflows/emscripten-cmake.yml/badge.svg)](https://github.com/Im-Rises/physical-engine-webgl/actions/workflows/emscripten-cmake.yml)
+[![Emscripten-Publish](https://github.com/Im-Rises/physical-engine-webgl/actions/workflows/emscripten-publish.yml/badge.svg)](https://github.com/Im-Rises/physical-engine-webgl/actions/workflows/emscripten-publish.yml)
 
 The project is set with a set of different scripts:
 
@@ -161,6 +166,8 @@ The project is set with a set of different scripts:
 - Flawfinder: This script is used to check the code for security issues.
 - Microsoft C++ Code Analysis: This script is used to check the code for security issues.
 - Cpp Linter: This script is used to check the code for security issues.
+- Emscripten CMake: This script is used to test build of the project using Emscripten toolchain.
+- Emscripten-Publish: This script build to webgl and publish the project on GitHub Pages.
 
 ## Documentations
 
