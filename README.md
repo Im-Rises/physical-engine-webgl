@@ -215,14 +215,4 @@ Quentin MOREL:
 - @Im-Rises
 - <https://github.com/Im-Rises>
 
-Gabriel REBOUL:
-
-- @spiryti
-- <https://github.com/spiryti>
-
-Clémence CLAVEL:
-
-- @clemos38
-- <https://github.com/clemos38>
-
 [![GitHub contributors](https://contrib.rocks/image?repo=Im-Rises/physical-engine-webgl)](https://github.com/Im-Rises/physical-engine-webgl/graphs/contributors)
