@@ -6,12 +6,12 @@
 #define PROJECT_AUTHOR "  - Quentin MOREL\n  - Clémence CLAVEL\n  - Gabriel REBOUL"
 
 #define VERSION_MAJOR "1"
-#define VERSION_MINOR "1"
+#define VERSION_MINOR "5"
 #define VERSION_PATCH "0"
 
 #define PROJECT_VERSION VERSION_MAJOR "." VERSION_MINOR "." VERSION_PATCH
 
-#define PROJECT_GITHUB "https://github.com/Im-Rises/PhysicalEngine"
+#define PROJECT_GITHUB "https://github.com/Im-Rises/physical-engine-webgl/"
 
 #define WINDOW_WIDTH 1280
 #define WINDOW_HEIGHT 720

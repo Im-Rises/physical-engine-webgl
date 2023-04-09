@@ -394,7 +394,8 @@ void PhysicalEngineLauncher::handleGui() {
 #ifdef __EMSCRIPTEN__
             if (startPosition) {
                 //center at the bottom
-                ImGui::SetNextWindowPos(ImVec2(windowWidth/2 - 300/2, windowHeight - 210));
+//                ImGui::SetNextWindowPos(ImVec2(windowWidth/2 - 300/2, windowHeight - 210));
+                ImGui::SetNextWindowPos(ImVec2(200 + 2 + 2, windowHeight - 210));
                 ImGui::SetNextWindowSize(ImVec2(300, 210));
 //                // set to minimize
 //                ImGui::SetNextWindowCollapsed(true);
