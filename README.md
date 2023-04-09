@@ -12,9 +12,9 @@
 
 This is a simple physics engine written in C++ using Glad, GLFW, OpenGl3 and Dear ImGui.
 
-this repository is a port of the [PhysicalEngine](https://github.com/Im-Rises/physical-engine-webgl) project to WebGL2.
+This repository is a port of the [PhysicalEngine](https://github.com/Im-Rises/physical-engine-webgl) project to WebGL2.
 
-🚀🚀 [You can test it online here](https://im-rises.github.io/physical-engine-webgl/) 🚀🚀
+## 🚀🚀 [You can test it online here](https://im-rises.github.io/physical-engine-webgl/) 🚀🚀
 
 > **Note**  
 > The project is made as an educational project to learn more about physics and game engine development.
@@ -208,7 +208,7 @@ Sphere OpenGL:
 unrealistic.dev (Change CMake working directory):  
 <https://unrealistic.dev/posts/setting-debug-parameters-with-cmake-tools-for-visual-studio>
 
-## Contributors
+## Contributors on the WebGL port
 
 Quentin MOREL:
 
@@ -216,3 +216,22 @@ Quentin MOREL:
 - <https://github.com/Im-Rises>
 
 [![GitHub contributors](https://contrib.rocks/image?repo=Im-Rises/physical-engine-webgl)](https://github.com/Im-Rises/physical-engine-webgl/graphs/contributors)
+
+## Contributors on the original project
+
+Quentin MOREL:
+
+- @Im-Rises
+- <https://github.com/Im-Rises>
+
+Gabriel REBOUL:
+
+- @spiryti
+- <https://github.com/spiryti>
+
+Clémence CLAVEL:
+
+- @clemos38
+- <https://github.com/clemos38>
+
+[![GitHub contributors](https://contrib.rocks/image?repo=Im-Rises/PhysicalEngine)](https://github.com/Im-Rises/PhysicalEngine/graphs/contributors)
